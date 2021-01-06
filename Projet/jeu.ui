@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>jeu</class>
+ <widget class="QDialog" name="jeu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>776</width>
+    <height>502</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>The World Of Tomorrow</string>
+  </property>
+  <widget class="QProgressBar" name="bar_mentale">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>430</y>
+     <width>231</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="value">
+    <number>24</number>
+   </property>
+  </widget>
+  <widget class="QProgressBar" name="bar_physique">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>390</y>
+     <width>231</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="value">
+    <number>24</number>
+   </property>
+  </widget>
+  <widget class="QSlider" name="horizontalSlider">
+   <property name="geometry">
+    <rect>
+     <x>480</x>
+     <y>290</y>
+     <width>160</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>47</x>
+     <y>95</y>
+     <width>321</width>
+     <height>301</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="l_action">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>90</y>
+     <width>171</width>
+     <height>121</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="l_deplacer">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>90</y>
+     <width>171</width>
+     <height>121</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Action">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>230</y>
+     <width>90</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Action</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="l_physique">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>90</y>
+     <width>171</width>
+     <height>121</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="l_mental">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>90</y>
+     <width>171</width>
+     <height>121</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>horizontalSlider</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>bar_mentale</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>540</x>
+     <y>299</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>642</x>
+     <y>447</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
