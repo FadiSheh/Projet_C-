@@ -15,6 +15,9 @@ public:
     explicit Menu(QWidget *parent = nullptr);
     ~Menu();
 
+    int choix_perso;
+    int choix_diff;
+
 private slots:
 
 
@@ -23,6 +26,10 @@ private slots:
     void on_cb_fadi_clicked(bool checked);
 
     void on_pb_Demarrer_clicked();
+
+    void on_cb_facile_clicked(bool checked);
+
+    void on_cb_difficile_clicked(bool checked);
 
 private:
     Ui::Menu *ui;

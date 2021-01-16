@@ -53,14 +53,22 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Projet/jeu.cpp \
+		../Projet/lieux.cpp \
 		../Projet/main.cpp \
 		../Projet/menu.cpp \
-		../Projet/personnage.cpp moc_jeu.cpp \
+		../Projet/metro.cpp \
+		../Projet/personnage.cpp \
+		../Projet/transports.cpp \
+		../Projet/vaccine.cpp moc_jeu.cpp \
 		moc_menu.cpp
 OBJECTS       = jeu.o \
+		lieux.o \
 		main.o \
 		menu.o \
+		metro.o \
 		personnage.o \
+		transports.o \
+		vaccine.o \
 		moc_jeu.o \
 		moc_menu.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -144,11 +152,19 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../Projet/Projet.pro ../Projet/jeu.h \
+		../Projet/lieux.h \
 		../Projet/menu.h \
-		../Projet/personnage.h ../Projet/jeu.cpp \
+		../Projet/metro.h \
+		../Projet/personnage.h \
+		../Projet/transports.h \
+		../Projet/vaccine.h ../Projet/jeu.cpp \
+		../Projet/lieux.cpp \
 		../Projet/main.cpp \
 		../Projet/menu.cpp \
-		../Projet/personnage.cpp
+		../Projet/metro.cpp \
+		../Projet/personnage.cpp \
+		../Projet/transports.cpp \
+		../Projet/vaccine.cpp
 QMAKE_TARGET  = Projet
 DESTDIR       = 
 TARGET        = Projet
@@ -338,8 +354,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Projet/jeu.h ../Projet/menu.h ../Projet/personnage.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Projet/jeu.cpp ../Projet/main.cpp ../Projet/menu.cpp ../Projet/personnage.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Projet/jeu.h ../Projet/lieux.h ../Projet/menu.h ../Projet/metro.h ../Projet/personnage.h ../Projet/transports.h ../Projet/vaccine.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Projet/jeu.cpp ../Projet/lieux.cpp ../Projet/main.cpp ../Projet/menu.cpp ../Projet/metro.cpp ../Projet/personnage.cpp ../Projet/transports.cpp ../Projet/vaccine.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Projet/jeu.ui ../Projet/menu.ui $(DISTDIR)/
 
 
@@ -378,6 +394,7 @@ compiler_moc_header_clean:
 moc_jeu.cpp: ../Projet/jeu.h \
 		../Projet/menu.h \
 		../Projet/personnage.h \
+		../Projet/vaccine.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/fadi/Documents/EISE4/C++/Projet/build-Projet-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/fadi/Documents/EISE4/C++/Projet/Projet -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Projet/jeu.h -o moc_jeu.cpp
@@ -415,20 +432,42 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 jeu.o: ../Projet/jeu.cpp ../Projet/jeu.h \
 		../Projet/menu.h \
 		../Projet/personnage.h \
-		ui_jeu.h
+		../Projet/vaccine.h \
+		ui_jeu.h \
+		../Projet/lieux.h \
+		../Projet/metro.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o jeu.o ../Projet/jeu.cpp
 
-main.o: ../Projet/main.cpp ../Projet/menu.h
+lieux.o: ../Projet/lieux.cpp ../Projet/lieux.h \
+		../Projet/personnage.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o lieux.o ../Projet/lieux.cpp
+
+main.o: ../Projet/main.cpp ../Projet/jeu.h \
+		../Projet/menu.h \
+		../Projet/personnage.h \
+		../Projet/vaccine.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Projet/main.cpp
 
 menu.o: ../Projet/menu.cpp ../Projet/menu.h \
-		ui_menu.h \
-		../Projet/jeu.h \
-		../Projet/personnage.h
+		ui_menu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menu.o ../Projet/menu.cpp
+
+metro.o: ../Projet/metro.cpp ../Projet/metro.h \
+		../Projet/lieux.h \
+		../Projet/personnage.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o metro.o ../Projet/metro.cpp
 
 personnage.o: ../Projet/personnage.cpp ../Projet/personnage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o personnage.o ../Projet/personnage.cpp
+
+transports.o: ../Projet/transports.cpp ../Projet/transports.h \
+		../Projet/lieux.h \
+		../Projet/personnage.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o transports.o ../Projet/transports.cpp
+
+vaccine.o: ../Projet/vaccine.cpp ../Projet/vaccine.h \
+		../Projet/personnage.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vaccine.o ../Projet/vaccine.cpp
 
 moc_jeu.o: moc_jeu.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_jeu.o moc_jeu.cpp

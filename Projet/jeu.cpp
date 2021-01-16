@@ -4,42 +4,47 @@
 #include <QString>
 #include <stdlib.h>
 #include <stdio.h>
-
+#include "menu.h"
+#include "lieux.h"
+#include "metro.h"
+#include "transports.h"
 
 jeu::jeu(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::jeu)
 {
+
+    Menu menu_;
+    menu_.setModal(true);
+    menu_.exec();
+
     ui->setupUi(this);
-
-    //Etape 1 => recuperer si le eprsonnage choisi c'est Amélie ou Fadi.
-
+    ui->lcdNumber->display(menu_.choix_diff);
 
 
+    //Initialisation Partie
+    Personnage perso(menu_.choix_perso,menu_.choix_diff);  //Creation du personnage pour la partie
 
-
-    Personnage perso(true,20,40);  //Creation du personnage pour la partie
     ui->bar_mentale->setValue(perso.getMent());   //Remplissage des barres d'evolution avec les parametre initiaux du personnage
     ui->bar_physique->setValue(perso.getPhy());
+    ui->label_nom->setText(perso.getNom());
+    ui->lcdNumber->display(perso.getPieces());
 
 
 
+    //Liste principale
+    i_Transports= new QListWidgetItem("Transports");
+    ui->l_principale->addItem(i_Transports);
 
 
-    i_deplacer = new QListWidgetItem("Se déplacer");
-    i_physique = new QListWidgetItem("Soin Physique");
-    i_mental = new QListWidgetItem("Soin mental");
+    //Liste de transports
 
-    ui->l_action->addItem(i_deplacer);
-    ui->l_action->addItem(i_physique);
-    ui->l_action->addItem(i_mental);
+    ui->l_transports->addItem(i_Bus);
+    ui->l_transports->addItem(i_Velo);
+    ui->l_transports->addItem(i_Train);
+    ui->l_transports->addItem(i_Marche);
 
-
-    ui->l_action->show();
-    ui->l_deplacer->hide();
-    ui->l_mental->hide();
-    ui->l_physique->hide();
-
+    //transports().assisBus();
 
 }
 
@@ -60,16 +65,14 @@ void jeu::on_progressBar_valueChanged(int value)
 
 
 
-void jeu::on_l_action_itemClicked(QListWidgetItem *item)
+
+void jeu::on_l_principale_itemClicked(QListWidgetItem *item)
 {
-    if (item==i_deplacer){ui->l_deplacer->show();ui->l_mental->hide();
-        ui->l_physique->hide();}
-
-    if (item==i_physique){ui->l_deplacer->hide();ui->l_mental->hide();
-        ui->l_physique->show();}
-
-    if (item==i_mental){ui->l_deplacer->hide();ui->l_mental->show();
-        ui->l_physique->hide();}
-
+    if (item==i_Transports){ui->l_transports->show(); ui->l_principale_3->hide();}
 }
 
+
+void jeu::on_l_transports_itemDoubleClicked(QListWidgetItem *item)
+{
+   // if(item==i_Bus || item==i_Train){ui->bar_mentale->setValue(perso->)
+}

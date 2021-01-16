@@ -10,6 +10,18 @@
     <height>502</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>776</width>
+    <height>502</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>776</width>
+    <height>502</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>The World Of Tomorrow</string>
   </property>
@@ -39,19 +51,6 @@
     <number>24</number>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider">
-   <property name="geometry">
-    <rect>
-     <x>480</x>
-     <y>290</y>
-     <width>160</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -65,77 +64,87 @@
     <string/>
    </property>
   </widget>
-  <widget class="QListWidget" name="l_action">
+  <widget class="QLabel" name="label_nom">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>90</y>
-     <width>171</width>
-     <height>121</height>
+     <x>90</x>
+     <y>30</y>
+     <width>111</width>
+     <height>21</height>
     </rect>
    </property>
-  </widget>
-  <widget class="QListWidget" name="l_deplacer">
-   <property name="geometry">
-    <rect>
-     <x>570</x>
-     <y>90</y>
-     <width>171</width>
-     <height>121</height>
-    </rect>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="Action">
+  <widget class="QLCDNumber" name="lcdNumber">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>230</y>
-     <width>90</width>
-     <height>28</height>
+     <x>660</x>
+     <y>20</y>
+     <width>91</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>617</x>
+     <y>20</y>
+     <width>31</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>Action</string>
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap>../coin.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
-  <widget class="QListWidget" name="l_physique">
+  <widget class="QListWidget" name="l_principale">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>90</y>
+     <x>390</x>
+     <y>80</y>
      <width>171</width>
-     <height>121</height>
+     <height>131</height>
     </rect>
    </property>
   </widget>
-  <widget class="QListWidget" name="l_mental">
+  <widget class="QListWidget" name="l_transports">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>90</y>
+     <x>580</x>
+     <y>80</y>
      <width>171</width>
-     <height>121</height>
+     <height>131</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="l_principale_3">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>80</y>
+     <width>171</width>
+     <height>131</height>
     </rect>
    </property>
   </widget>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>horizontalSlider</sender>
-   <signal>sliderMoved(int)</signal>
-   <receiver>bar_mentale</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>540</x>
-     <y>299</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>642</x>
-     <y>447</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

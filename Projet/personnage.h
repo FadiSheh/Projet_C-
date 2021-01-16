@@ -1,38 +1,32 @@
 #ifndef PERSONNAGE_H
 #define PERSONNAGE_H
 
+#include <QString>
 
 class Personnage
 {
 public:
-    Personnage(bool _vaccine, int _physique, int _mental);
+    Personnage();
+    Personnage(int _AouF, int _niveau);
     ~Personnage();
 
+QString getNom(){return nom;}
 
-int getPhy() const{
+int getPhy() const{return physique;}
 
-    return physique;
-}
+int getMent() const{return mentale;}
 
-int getMent() const{
+int getPieces() const {return pieces;}
 
-    return mental;
-}
+void addPieces(int val){pieces += val;}
 
-double getContamine() const{
+void addPhy(int val){physique += val;}
+void addMent(int val){mentale +=val;}
 
-    return contamine;
-}
+double getContamine() const{return contamine;}
 
-double getContaminant() const{
+double getContaminant() const{ return contaminant;}
 
-    return contaminant;
-}
-
-bool getImmunite() const{
-
-      return immunite;
-}
 
 
 
@@ -46,12 +40,17 @@ void porterMasque();
 
 private:
 
-    bool immunite;
-    bool vaccine;
-    int physique;
-    int mental;
+    int AouF;
+    bool immunise;
     float contamine;
     float contaminant;
+    QString nom;
+    int pieces;
+
+protected:
+    int physique;
+    int mentale;
+
 };
 
 #endif // PERSONNAGE_H

@@ -1,6 +1,6 @@
 #include <QApplication>
 #include <QPushButton>
-#include "menu.h"
+#include "jeu.h"
 
 
 
@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
-    Menu fenetre_menu;
+    jeu fenetre_menu;
     fenetre_menu.show();
 
 

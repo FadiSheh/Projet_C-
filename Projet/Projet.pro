@@ -2,14 +2,22 @@ QT += widgets
 
 SOURCES += \
     jeu.cpp \
+    lieux.cpp \
     main.cpp \
     menu.cpp \
-    personnage.cpp
+    metro.cpp \
+    personnage.cpp \
+    transports.cpp \
+    vaccine.cpp
 
 HEADERS += \
     jeu.h \
+    lieux.h \
     menu.h \
-    personnage.h
+    metro.h \
+    personnage.h \
+    transports.h \
+    vaccine.h
 
 FORMS += \
     jeu.ui \
@@ -19,4 +27,3 @@ RESOURCES +=
 
 DISTFILES +=
 
-CONFIG += console
