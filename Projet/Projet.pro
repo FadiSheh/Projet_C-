@@ -1,29 +1,24 @@
 QT += widgets
-
+QT += multimedia
+QT += core gui
 SOURCES += \
     jeu.cpp \
-    lieux.cpp \
     main.cpp \
-    menu.cpp \
-    metro.cpp \
-    personnage.cpp \
-    transports.cpp \
-    vaccine.cpp
+    menu.cpp
 
 HEADERS += \
     jeu.h \
-    lieux.h \
     menu.h \
-    metro.h \
     personnage.h \
-    transports.h \
     vaccine.h
 
 FORMS += \
     jeu.ui \
     menu.ui
 
-RESOURCES +=
+RESOURCES += \
+    ress/images.qrc
 
-DISTFILES +=
+DISTFILES += \
+    ress/sounds.mp3
 

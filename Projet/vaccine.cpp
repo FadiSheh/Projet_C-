@@ -2,5 +2,5 @@
 
 Vaccine::Vaccine()
 {
- this->physique=47;
+
 }

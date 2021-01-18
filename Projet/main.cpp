@@ -10,9 +10,7 @@ int main(int argc, char *argv[])
 
     jeu fenetre_menu;
     fenetre_menu.show();
-
-
-
-
+    fenetre_menu.initList();
+    fenetre_menu.listingLieux();
     return app.exec();
 }

@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../Projet -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
+INCPATH       = -I../Projet -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtMultimedia -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtNetwork -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++
 QMAKE         = /usr/lib/qt5/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = Projet1.0.0
 DISTDIR = /home/fadi/Documents/EISE4/C++/Projet/build-Projet-Desktop-Debug/.tmp/Projet1.0.0
 LINK          = g++
 LFLAGS        = 
-LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt5Widgets.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Core.so /usr/lib/x86_64-linux-gnu/libGL.so -lpthread   
+LIBS          = $(SUBLIBS) /usr/lib/x86_64-linux-gnu/libQt5Widgets.so /usr/lib/x86_64-linux-gnu/libQt5Multimedia.so /usr/lib/x86_64-linux-gnu/libQt5Gui.so /usr/lib/x86_64-linux-gnu/libQt5Network.so /usr/lib/x86_64-linux-gnu/libQt5Core.so /usr/lib/x86_64-linux-gnu/libGL.so -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -53,25 +53,18 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Projet/jeu.cpp \
-		../Projet/lieux.cpp \
 		../Projet/main.cpp \
-		../Projet/menu.cpp \
-		../Projet/metro.cpp \
-		../Projet/personnage.cpp \
-		../Projet/transports.cpp \
-		../Projet/vaccine.cpp moc_jeu.cpp \
+		../Projet/menu.cpp qrc_images.cpp \
+		moc_jeu.cpp \
 		moc_menu.cpp
 OBJECTS       = jeu.o \
-		lieux.o \
 		main.o \
 		menu.o \
-		metro.o \
-		personnage.o \
-		transports.o \
-		vaccine.o \
+		qrc_images.o \
 		moc_jeu.o \
 		moc_menu.o
-DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
+DIST          = ../Projet/ress/sounds.mp3 \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/sanitize.conf \
@@ -102,6 +95,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimedia.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl.pri \
@@ -152,19 +147,11 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../Projet/Projet.pro ../Projet/jeu.h \
-		../Projet/lieux.h \
 		../Projet/menu.h \
-		../Projet/metro.h \
 		../Projet/personnage.h \
-		../Projet/transports.h \
 		../Projet/vaccine.h ../Projet/jeu.cpp \
-		../Projet/lieux.cpp \
 		../Projet/main.cpp \
-		../Projet/menu.cpp \
-		../Projet/metro.cpp \
-		../Projet/personnage.cpp \
-		../Projet/transports.cpp \
-		../Projet/vaccine.cpp
+		../Projet/menu.cpp
 QMAKE_TARGET  = Projet
 DESTDIR       = 
 TARGET        = Projet
@@ -207,6 +194,8 @@ Makefile: ../Projet/Projet.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/q
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimedia.pri \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl.pri \
@@ -256,7 +245,8 @@ Makefile: ../Projet/Projet.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/q
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../Projet/Projet.pro
+		../Projet/Projet.pro \
+		../Projet/ress/images.qrc
 	$(QMAKE) -o Makefile ../Projet/Projet.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf:
@@ -289,6 +279,8 @@ Makefile: ../Projet/Projet.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/q
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_input_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_kms_support_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimedia.pri:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_multimediawidgets.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_network_private.pri:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/modules/qt_lib_opengl.pri:
@@ -339,6 +331,7 @@ Makefile: ../Projet/Projet.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++/q
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 ../Projet/Projet.pro:
+../Projet/ress/images.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../Projet/Projet.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
@@ -353,9 +346,10 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../Projet/ress/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Projet/jeu.h ../Projet/lieux.h ../Projet/menu.h ../Projet/metro.h ../Projet/personnage.h ../Projet/transports.h ../Projet/vaccine.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Projet/jeu.cpp ../Projet/lieux.cpp ../Projet/main.cpp ../Projet/menu.cpp ../Projet/metro.cpp ../Projet/personnage.cpp ../Projet/transports.cpp ../Projet/vaccine.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Projet/jeu.h ../Projet/menu.h ../Projet/personnage.h ../Projet/vaccine.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Projet/jeu.cpp ../Projet/main.cpp ../Projet/menu.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Projet/jeu.ui ../Projet/menu.ui $(DISTDIR)/
 
 
@@ -380,8 +374,24 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_images.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_images.cpp
+qrc_images.cpp: ../Projet/ress/images.qrc \
+		/usr/lib/qt5/bin/rcc \
+		../Projet/ress/fadi_content.jpg \
+		../Projet/ress/sounds.mp3 \
+		../Projet/ress/coin.png \
+		../Projet/ress/fadi_stable.jpg \
+		../Projet/ress/amelie_content.jpg \
+		../Projet/ress/fadi_intro.jpeg \
+		../Projet/ress/amelie_pls.jpg \
+		../Projet/ress/amelie_stable.jpg \
+		../Projet/ress/fond_menu.jpg \
+		../Projet/ress/amelie_intro.jpeg \
+		../Projet/ress/fadi_pls.jpg
+	/usr/lib/qt5/bin/rcc -name images ../Projet/ress/images.qrc -o qrc_images.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -393,16 +403,14 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_jeu.cpp moc_menu.cpp
 moc_jeu.cpp: ../Projet/jeu.h \
 		../Projet/menu.h \
-		../Projet/personnage.h \
-		../Projet/vaccine.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/fadi/Documents/EISE4/C++/Projet/build-Projet-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/fadi/Documents/EISE4/C++/Projet/Projet -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Projet/jeu.h -o moc_jeu.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/fadi/Documents/EISE4/C++/Projet/build-Projet-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/fadi/Documents/EISE4/C++/Projet/Projet -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Projet/jeu.h -o moc_jeu.cpp
 
 moc_menu.cpp: ../Projet/menu.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/fadi/Documents/EISE4/C++/Projet/build-Projet-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/fadi/Documents/EISE4/C++/Projet/Projet -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Projet/menu.h -o moc_menu.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/fadi/Documents/EISE4/C++/Projet/build-Projet-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/fadi/Documents/EISE4/C++/Projet/Projet -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Projet/menu.h -o moc_menu.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -425,49 +433,27 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
 jeu.o: ../Projet/jeu.cpp ../Projet/jeu.h \
 		../Projet/menu.h \
-		../Projet/personnage.h \
-		../Projet/vaccine.h \
 		ui_jeu.h \
-		../Projet/lieux.h \
-		../Projet/metro.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o jeu.o ../Projet/jeu.cpp
-
-lieux.o: ../Projet/lieux.cpp ../Projet/lieux.h \
-		../Projet/personnage.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o lieux.o ../Projet/lieux.cpp
-
-main.o: ../Projet/main.cpp ../Projet/jeu.h \
-		../Projet/menu.h \
 		../Projet/personnage.h \
 		../Projet/vaccine.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o jeu.o ../Projet/jeu.cpp
+
+main.o: ../Projet/main.cpp ../Projet/jeu.h \
+		../Projet/menu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Projet/main.cpp
 
 menu.o: ../Projet/menu.cpp ../Projet/menu.h \
 		ui_menu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menu.o ../Projet/menu.cpp
 
-metro.o: ../Projet/metro.cpp ../Projet/metro.h \
-		../Projet/lieux.h \
-		../Projet/personnage.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o metro.o ../Projet/metro.cpp
-
-personnage.o: ../Projet/personnage.cpp ../Projet/personnage.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o personnage.o ../Projet/personnage.cpp
-
-transports.o: ../Projet/transports.cpp ../Projet/transports.h \
-		../Projet/lieux.h \
-		../Projet/personnage.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o transports.o ../Projet/transports.cpp
-
-vaccine.o: ../Projet/vaccine.cpp ../Projet/vaccine.h \
-		../Projet/personnage.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vaccine.o ../Projet/vaccine.cpp
+qrc_images.o: qrc_images.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_images.o qrc_images.cpp
 
 moc_jeu.o: moc_jeu.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_jeu.o moc_jeu.cpp

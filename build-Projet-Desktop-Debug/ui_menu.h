@@ -88,7 +88,7 @@ public:
         i_amelie->setGeometry(QRect(60, 90, 161, 201));
         i_amelie->setFrameShape(QFrame::Box);
         i_amelie->setFrameShadow(QFrame::Raised);
-        i_amelie->setPixmap(QPixmap(QString::fromUtf8("../amelie_intro.jpeg")));
+        i_amelie->setPixmap(QPixmap(QString::fromUtf8(":/amelie_intro.jpeg")));
         i_amelie->setScaledContents(true);
         i_fadi = new QLabel(Menu);
         i_fadi->setObjectName(QString::fromUtf8("i_fadi"));
@@ -96,12 +96,12 @@ public:
         i_fadi->setAutoFillBackground(false);
         i_fadi->setFrameShape(QFrame::Box);
         i_fadi->setFrameShadow(QFrame::Raised);
-        i_fadi->setPixmap(QPixmap(QString::fromUtf8("../fadi_intro.jpeg")));
+        i_fadi->setPixmap(QPixmap(QString::fromUtf8(":/fadi_intro.jpeg")));
         i_fadi->setScaledContents(true);
         label_2 = new QLabel(Menu);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(0, 0, 661, 421));
-        label_2->setPixmap(QPixmap(QString::fromUtf8("../fond_menu.jpg")));
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/fond_menu.jpg")));
         niveau_diff = new QFrame(Menu);
         niveau_diff->setObjectName(QString::fromUtf8("niveau_diff"));
         niveau_diff->setGeometry(QRect(260, 110, 151, 161));

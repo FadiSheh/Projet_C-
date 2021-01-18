@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>amelie_intro.jpeg</file>
+        <file>coin.png</file>
+        <file>fadi_intro.jpeg</file>
+        <file>fond_menu.jpg</file>
+        <file>amelie_content.jpg</file>
+        <file>amelie_stable.jpg</file>
+        <file>amelie_pls.jpg</file>
+        <file>fadi_content.jpg</file>
+        <file>fadi_pls.jpg</file>
+        <file>fadi_stable.jpg</file>
+        <file>sounds.mp3</file>
+    </qresource>
+</RCC>

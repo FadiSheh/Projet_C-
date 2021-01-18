@@ -152,7 +152,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../amelie_intro.jpeg</pixmap>
+    <pixmap resource="ress/images.qrc">:/amelie_intro.jpeg</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -180,7 +180,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../fadi_intro.jpeg</pixmap>
+    <pixmap resource="ress/images.qrc">:/fadi_intro.jpeg</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -199,7 +199,7 @@
     <string/>
    </property>
    <property name="pixmap">
-    <pixmap>../fond_menu.jpg</pixmap>
+    <pixmap resource="ress/images.qrc">:/fond_menu.jpg</pixmap>
    </property>
   </widget>
   <widget class="QFrame" name="niveau_diff">
@@ -678,6 +678,8 @@
   <zorder>i_fadi</zorder>
   <zorder>cb_amelie</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="ress/images.qrc"/>
+ </resources>
  <connections/>
 </ui>
