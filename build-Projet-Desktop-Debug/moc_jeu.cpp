@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_jeu_t {
-    QByteArrayData data[9];
-    char stringdata0[139];
+    QByteArrayData data[11];
+    char stringdata0[199];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,14 +39,17 @@ QT_MOC_LITERAL(4, 50, 4), // "item"
 QT_MOC_LITERAL(5, 55, 28), // "on_bar_physique_valueChanged"
 QT_MOC_LITERAL(6, 84, 5), // "value"
 QT_MOC_LITERAL(7, 90, 27), // "on_bar_mentale_valueChanged"
-QT_MOC_LITERAL(8, 118, 20) // "on_pb_action_clicked"
+QT_MOC_LITERAL(8, 118, 20), // "on_pb_action_clicked"
+QT_MOC_LITERAL(9, 139, 29), // "on_l_principale_2_itemClicked"
+QT_MOC_LITERAL(10, 169, 29) // "on_l_principale_3_itemClicked"
 
     },
     "jeu\0on_l_principale_itemClicked\0\0"
     "QListWidgetItem*\0item\0"
     "on_bar_physique_valueChanged\0value\0"
     "on_bar_mentale_valueChanged\0"
-    "on_pb_action_clicked"
+    "on_pb_action_clicked\0on_l_principale_2_itemClicked\0"
+    "on_l_principale_3_itemClicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +59,7 @@ static const uint qt_meta_data_jeu[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -64,16 +67,20 @@ static const uint qt_meta_data_jeu[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   34,    2, 0x08 /* Private */,
-       5,    1,   37,    2, 0x08 /* Private */,
-       7,    1,   40,    2, 0x08 /* Private */,
-       8,    0,   43,    2, 0x08 /* Private */,
+       1,    1,   44,    2, 0x08 /* Private */,
+       5,    1,   47,    2, 0x08 /* Private */,
+       7,    1,   50,    2, 0x08 /* Private */,
+       8,    0,   53,    2, 0x08 /* Private */,
+       9,    1,   54,    2, 0x08 /* Private */,
+      10,    1,   57,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, QMetaType::Int,    6,
     QMetaType::Void, QMetaType::Int,    6,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void, 0x80000000 | 3,    4,
 
        0        // eod
 };
@@ -88,6 +95,8 @@ void jeu::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **
         case 1: _t->on_bar_physique_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 2: _t->on_bar_mentale_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 3: _t->on_pb_action_clicked(); break;
+        case 4: _t->on_l_principale_2_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
+        case 5: _t->on_l_principale_3_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -122,13 +131,13 @@ int jeu::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 6)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 6;
     }
     return _id;
 }

@@ -403,6 +403,8 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_jeu.cpp moc_menu.cpp
 moc_jeu.cpp: ../Projet/jeu.h \
 		../Projet/menu.h \
+		../Projet/vaccine.h \
+		../Projet/personnage.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/fadi/Documents/EISE4/C++/Projet/build-Projet-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/fadi/Documents/EISE4/C++/Projet/Projet -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Projet/jeu.h -o moc_jeu.cpp
@@ -439,13 +441,15 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 jeu.o: ../Projet/jeu.cpp ../Projet/jeu.h \
 		../Projet/menu.h \
-		ui_jeu.h \
+		../Projet/vaccine.h \
 		../Projet/personnage.h \
-		../Projet/vaccine.h
+		ui_jeu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o jeu.o ../Projet/jeu.cpp
 
 main.o: ../Projet/main.cpp ../Projet/jeu.h \
-		../Projet/menu.h
+		../Projet/menu.h \
+		../Projet/vaccine.h \
+		../Projet/personnage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Projet/main.cpp
 
 menu.o: ../Projet/menu.cpp ../Projet/menu.h \

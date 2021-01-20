@@ -8,7 +8,7 @@
 //#include "personnage.h"
 #include <QMediaPlayer>
 #include "vaccine.h"
-
+#include <QInputDialog>
 int valeur_bar_mental;
 int valeur_fenetre;
 
@@ -58,13 +58,7 @@ jeu::~jeu()
 
 
 
-void jeu::on_l_principale_itemClicked(QListWidgetItem *item)
-{
-
-    updateListePrincipale2(item);
-
-
-}
+void jeu::on_l_principale_itemClicked(QListWidgetItem *item){updateListePrincipale2(item);}
 
 
 void jeu::on_bar_physique_valueChanged(int value)
@@ -130,6 +124,18 @@ void jeu::initList(){
 
 
 
+ i_Distance_Bus = new QListWidgetItem("Parcourir Distance");
+ i_Distance_Metro = new QListWidgetItem("Parcourir Distance");
+ i_Entreprise_Duree = new QListWidgetItem("Durée Au Travail");
+ i_Universite_Duree = new QListWidgetItem("Durée du TD");
+ i_Cinema_Films = new QListWidgetItem("Regarde un film");
+ i_Bar_Bieres = new QListWidgetItem("Boire une bière");
+ i_SalleDeSport_Machines = new QListWidgetItem("Utiliser une Machine");
+ i_Pharmacie_Articles = new QListWidgetItem("Achat Produits");
+ i_Supermarche_Articles= new QListWidgetItem("Achat Nourriture");
+
+ item_actuel= new QListWidgetItem();
+
 
 };
 
@@ -157,11 +163,58 @@ void jeu::updateListePrincipale2(QListWidgetItem *item){
 
 };
 
+void jeu::updateListePrincipale3(QListWidgetItem * item){
 
+    while(ui->l_principale_3->count()>0){ui->l_principale_3->takeItem(0);}
+
+    if(item==i_Bus){
+        ui->l_principale_3->addItem(i_Distance_Bus);}
+
+    if(item==i_Metro){
+        ui->l_principale_3->addItem(i_Distance_Metro);
+      }
+
+    if(item==i_Cinema){
+        ui->l_principale_3->addItem(i_Cinema_Films);}
+
+    if(item==i_Bar){
+        ui->l_principale_3->addItem(i_Bar_Bieres);}
+
+    if(item==i_SalleDeSport){
+        ui->l_principale_3->addItem(i_SalleDeSport_Machines);}
+
+    if(item==i_Pharmacie){
+        ui->l_principale_3->addItem(i_Pharmacie_Articles);}
+
+    if(item==i_Supermarche){
+        ui->l_principale_3->addItem(i_Supermarche_Articles);}
+
+    if(item==i_Entreprise){
+        ui->l_principale_3->addItem(i_Entreprise_Duree);}
+
+    if(item==i_Universite){
+        ui->l_principale_3->addItem(i_Universite_Duree);}
+
+}
 
 void jeu::on_pb_action_clicked()
-{   perso.setMental(-2);
-    ui->bar_mentale->setValue(perso.getMent());
-    perso.setPhysique(-2);
-    ui->bar_physique->setValue(perso.getPhy());
-}
+{  QString lieutest;
+
+        if(item_actuel==i_Distance_Bus){
+                lieutest= "Quelle distance veut tu parcourir";
+                int max = 10;
+
+             int val = QInputDialog::getInt(this,"Entrez valeur",lieutest,0,0,max,1);
+              perso.setDonneeLieu(val);
+
+
+            perso.setMental(-2);
+            ui->bar_mentale->setValue(perso.getMent());
+            perso.setPhysique(-2);
+            ui->bar_physique->setValue(perso.getPhy());}
+    }
+
+
+void jeu::on_l_principale_2_itemClicked(QListWidgetItem *item){updateListePrincipale3(item);}
+
+void jeu::on_l_principale_3_itemClicked(QListWidgetItem *item){this->item_actuel = item;}
