@@ -63,7 +63,8 @@ OBJECTS       = jeu.o \
 		qrc_images.o \
 		moc_jeu.o \
 		moc_menu.o
-DIST          = ../Projet/ress/sounds.mp3 \
+DIST          = ../Projet/ress/bus-door-open-01.mp3 \
+		../Projet/ress/sounds.mp3 \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -146,10 +147,25 @@ DIST          = ../Projet/ress/sounds.mp3 \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../Projet/Projet.pro ../Projet/jeu.h \
+		../Projet/Projet.pro ../Projet/Bar.h \
+		../Projet/Bus.h \
+		../Projet/Cinema.h \
+		../Projet/Course.h \
+		../Projet/Entreprise.h \
+		../Projet/Loisir.h \
+		../Projet/Metro.h \
+		../Projet/NonVaccine.h \
+		../Projet/Pharmacie.h \
+		../Projet/SalleDeSport.h \
+		../Projet/Supermarche.h \
+		../Projet/Transport.h \
+		../Projet/Travail.h \
+		../Projet/Universite.h \
+		../Projet/Vaccine.h \
+		../Projet/jeu.h \
+		../Projet/lieu.h \
 		../Projet/menu.h \
-		../Projet/personnage.h \
-		../Projet/vaccine.h ../Projet/jeu.cpp \
+		../Projet/personnage.h ../Projet/jeu.cpp \
 		../Projet/main.cpp \
 		../Projet/menu.cpp
 QMAKE_TARGET  = Projet
@@ -348,7 +364,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Projet/ress/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Projet/jeu.h ../Projet/menu.h ../Projet/personnage.h ../Projet/vaccine.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Projet/Bar.h ../Projet/Bus.h ../Projet/Cinema.h ../Projet/Course.h ../Projet/Entreprise.h ../Projet/Loisir.h ../Projet/Metro.h ../Projet/NonVaccine.h ../Projet/Pharmacie.h ../Projet/SalleDeSport.h ../Projet/Supermarche.h ../Projet/Transport.h ../Projet/Travail.h ../Projet/Universite.h ../Projet/Vaccine.h ../Projet/jeu.h ../Projet/lieu.h ../Projet/menu.h ../Projet/personnage.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../Projet/jeu.cpp ../Projet/main.cpp ../Projet/menu.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Projet/jeu.ui ../Projet/menu.ui $(DISTDIR)/
 
@@ -384,6 +400,7 @@ qrc_images.cpp: ../Projet/ress/images.qrc \
 		../Projet/ress/coin.png \
 		../Projet/ress/fadi_stable.jpg \
 		../Projet/ress/amelie_content.jpg \
+		../Projet/ress/bus-door-open-01.mp3 \
 		../Projet/ress/fadi_intro.jpeg \
 		../Projet/ress/amelie_pls.jpg \
 		../Projet/ress/amelie_stable.jpg \
@@ -403,8 +420,23 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_jeu.cpp moc_menu.cpp
 moc_jeu.cpp: ../Projet/jeu.h \
 		../Projet/menu.h \
-		../Projet/vaccine.h \
+		../Projet/Vaccine.h \
 		../Projet/personnage.h \
+		../Projet/NonVaccine.h \
+		../Projet/Bus.h \
+		../Projet/Transport.h \
+		../Projet/lieu.h \
+		../Projet/Metro.h \
+		../Projet/Pharmacie.h \
+		../Projet/Course.h \
+		../Projet/Supermarche.h \
+		../Projet/Entreprise.h \
+		../Projet/Travail.h \
+		../Projet/Universite.h \
+		../Projet/Bar.h \
+		../Projet/Loisir.h \
+		../Projet/Cinema.h \
+		../Projet/SalleDeSport.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
 	/usr/lib/qt5/bin/moc $(DEFINES) --include /home/fadi/Documents/EISE4/C++/Projet/build-Projet-Desktop-Debug/moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++ -I/home/fadi/Documents/EISE4/C++/Projet/Projet -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtMultimedia -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtNetwork -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/9 -I/usr/include/x86_64-linux-gnu/c++/9 -I/usr/include/c++/9/backward -I/usr/lib/gcc/x86_64-linux-gnu/9/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Projet/jeu.h -o moc_jeu.cpp
@@ -441,15 +473,45 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 jeu.o: ../Projet/jeu.cpp ../Projet/jeu.h \
 		../Projet/menu.h \
-		../Projet/vaccine.h \
+		../Projet/Vaccine.h \
 		../Projet/personnage.h \
+		../Projet/NonVaccine.h \
+		../Projet/Bus.h \
+		../Projet/Transport.h \
+		../Projet/lieu.h \
+		../Projet/Metro.h \
+		../Projet/Pharmacie.h \
+		../Projet/Course.h \
+		../Projet/Supermarche.h \
+		../Projet/Entreprise.h \
+		../Projet/Travail.h \
+		../Projet/Universite.h \
+		../Projet/Bar.h \
+		../Projet/Loisir.h \
+		../Projet/Cinema.h \
+		../Projet/SalleDeSport.h \
 		ui_jeu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o jeu.o ../Projet/jeu.cpp
 
 main.o: ../Projet/main.cpp ../Projet/jeu.h \
 		../Projet/menu.h \
-		../Projet/vaccine.h \
-		../Projet/personnage.h
+		../Projet/Vaccine.h \
+		../Projet/personnage.h \
+		../Projet/NonVaccine.h \
+		../Projet/Bus.h \
+		../Projet/Transport.h \
+		../Projet/lieu.h \
+		../Projet/Metro.h \
+		../Projet/Pharmacie.h \
+		../Projet/Course.h \
+		../Projet/Supermarche.h \
+		../Projet/Entreprise.h \
+		../Projet/Travail.h \
+		../Projet/Universite.h \
+		../Projet/Bar.h \
+		../Projet/Loisir.h \
+		../Projet/Cinema.h \
+		../Projet/SalleDeSport.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Projet/main.cpp
 
 menu.o: ../Projet/menu.cpp ../Projet/menu.h \

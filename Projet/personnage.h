@@ -4,6 +4,8 @@
 #include <QRandomGenerator>
 #include <stdio.h>
 #include <stdlib.h>
+#include <QVector>
+#include <QMessageBox>
 
 using namespace std;
 
@@ -25,9 +27,14 @@ class Personnage {
         int AouF; //0 : A ; 1 : F
         int difficulte; //0 : facile ; 1 : difficle
         string nom;
+        QVector<QString> lieuxAutorises;
+        QString lieuActuel;
+
+
 
     public:
         //constructeurs - destructeurs
+
         Personnage(){
             contamine = (int)(rand()%100);
             contaminant = (int)(rand()%100);
@@ -38,6 +45,24 @@ class Personnage {
             monnaie = 99;
         };
 
+
+        Personnage(std::string lieu){
+
+                    contamine = (int)(rand()%100);
+                    contaminant = (int)(rand()%100);
+                    physique = (int)(rand()%100);
+                    mental = (int)(rand()%100);
+                    donneelieu = 1;
+                    lieuActuel = QString::fromStdString(lieu);
+                    //lieux autorises a tous
+                    lieuxAutorises.push_back("Metro");
+                    lieuxAutorises.push_back("Bus");
+                    lieuxAutorises.push_back("Maison");
+                    lieuxAutorises.push_back("Entreprise");
+                    lieuxAutorises.push_back("Universite");
+                    lieuxAutorises.push_back("Bar");
+                    lieuxAutorises.push_back("SalleDeSport");
+                };
 
         Personnage(int aouf, int diffi){ //valeurs entre 36 et 65 pour physique et mental
             AouF = aouf;
@@ -61,11 +86,22 @@ class Personnage {
 
             if(difficulte == 0){
                 //niveau facile
-                monnaie = 500;
+                monnaie = 20;
             }
             else{
-                monnaie = 100;
+                monnaie = 20;
             }
+
+
+            lieuxAutorises.push_back("Metro");
+            lieuxAutorises.push_back("Bus");
+            lieuxAutorises.push_back("Pharmacie");
+            lieuxAutorises.push_back("Supermarche");
+            lieuxAutorises.push_back("Universite");
+            lieuxAutorises.push_back("Entreprise");
+            lieuxAutorises.push_back("SalleDeSport");
+            lieuxAutorises.push_back("Cinema");
+            lieuxAutorises.push_back("Bar");
         };
 
         virtual ~Personnage(){}; //virtual
@@ -95,8 +131,15 @@ class Personnage {
         int getMonnaie() const{
             return monnaie;
         }
-        void setMonnaie(int mon){
-            monnaie = monnaie + mon;
+        int setMonnaie(int mon){
+            int temp = monnaie + mon;
+
+            if (temp < 0){ return 0;} //si pas assez d'argent renvoie 0
+
+            else {monnaie = monnaie + mon;}
+
+            return 1;
+
         }
         void setDonneeLieu(int donnee){
             donneelieu = donnee;
@@ -112,21 +155,27 @@ class Personnage {
             if (physique>100){physique=100;}
         }
 
+        QVector<QString> getLieuxAutorises(){ return lieuxAutorises;}
+
         virtual std::string toString() const = 0;
         //virtual void contamination() const = 0;
 
         //actions pareil pour tous les personnages
         void lavageMains(){
-            setPhysique(8);
+
+            if (this->setMonnaie(-2)){setPhysique(4);} else { QMessageBox messageBox;
+                messageBox.critical(0,"Erreur","Pas assez de crédits!");
+                messageBox.setFixedSize(500,200);}
+
         }
 
-        void gelHydrauAlcoolique(){
-            setPhysique(5);
+        void gelHydroAlcoolique(){
+            if (this->setMonnaie(-1)){setPhysique(2);} else { QMessageBox messageBox;
+                messageBox.critical(0,"Erreur","Pas assez de crédits!");
+                messageBox.setFixedSize(500,200);}
         }
 
 
-        /*void desinfecterAchat(){
-        }*/
 
 };
 #endif // PERSONNAGE_H

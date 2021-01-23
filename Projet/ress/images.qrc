@@ -11,5 +11,6 @@
         <file>fadi_pls.jpg</file>
         <file>fadi_stable.jpg</file>
         <file>sounds.mp3</file>
+        <file>bus-door-open-01.mp3</file>
     </qresource>
 </RCC>

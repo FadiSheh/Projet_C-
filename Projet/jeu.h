@@ -6,7 +6,18 @@
 #include <QListWidgetItem>
 #include "menu.h"
 #include <QVector>
-#include "vaccine.h"
+#include "Vaccine.h"
+#include "NonVaccine.h"
+#include "Bus.h"
+#include "Metro.h"
+#include "Pharmacie.h"
+#include "Supermarche.h"
+#include "Entreprise.h"
+#include "Universite.h"
+#include "Bar.h"
+#include "Cinema.h"
+#include "SalleDeSport.h"
+#include <QMediaPlayer>
 
 namespace Ui {
 class jeu;
@@ -40,6 +51,25 @@ class jeu : public QDialog
      QListWidgetItem *i_Cinema_Films,*i_Bar_Bieres, *i_SalleDeSport_Machines;
      //Courses
      QListWidgetItem *i_Pharmacie_Articles,*i_Supermarche_Articles;
+     //Actions communes
+     QListWidgetItem *i_LavageMains,*i_gelHydroAlcoolique;
+
+
+
+
+     //Liste des lieux
+
+     Bus *bus;
+     Metro *metro;
+     Pharmacie *pharmacie;
+     Supermarche *supermarche;
+     Entreprise *entreprise;
+     Universite *universite;
+     Bar *bar;
+     SalleDeSport *salledesport;
+     Cinema *cinema;
+     QMediaPlayer * music;
+
 
 public:
     explicit jeu(QWidget *parent = nullptr);
@@ -53,6 +83,7 @@ public:
     void updateListePrincipale3(QListWidgetItem * item);
     void listingLieux();
     void initList();
+    int verifLieu(QString nom_lieu);
 
     ~jeu();
 
@@ -73,10 +104,12 @@ private slots:
 
     void on_l_principale_3_itemClicked(QListWidgetItem *item);
 
+
+
 private:
 
     Ui::jeu *ui;
-    Vaccine perso;
+    NonVaccine perso;
     int choix_perso ;
     int choix_diff ;
 
